@@ -1,38 +1,127 @@
 <!DOCTYPE html>
-<html lang="zh-cn">
-    <head>
-    <script src="./js/spine-webgl.js"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="./js/MobileDrawer.js"></script>
-    <script src="./js/select.js"></script>
-    <script src="./js/SpinLoader.js"></script>
-    <link rel="stylesheet" href="./css/index.css" />
-    <!-- <style>
-        {
-            
-        }
-    </style> -->
-    </head>
-    <body>
-        <div id="spinWrapper">
-            <spin-loader id="spin" size="100" color="#00aaff"></spin-loader>
-        </div>
-        <mobile-drawer id="drawer" side="left">
-            <div style="padding: 16px">
-                <div id="panel" onclick="drawer.close()"></div>
-            </div>
-        </mobile-drawer>
-        <canvas id="canvas"></canvas>
-        <script type="module">
-            import { init } from "./js/index.js";
-            import { renderMemberSelect, DATA_FILTER_TYPE } from "./js/getData.js";
-            init({
-                dir: "./",
-                skelFile: "dyn_illust_char_1028_texas2.skel",
-                atlasFile: "dyn_illust_char_1028_texas2.atlas",
-                fitToCanvas: false,
-            });
-            renderMemberSelect([DATA_FILTER_TYPE.DynIllust]);
-        </script>
-    </body>
+<html lang="en">
+<head>
+	<script src="js/arknights.js"></script>
+	<script src="js/jquery.3.3.1.min.js?v=1.0"></script>
+	<script src="js/jquery.pjax.js?v=1.0"></script>
+	<script src="js/GYST.js?v=1.0"></script>
+	<script src="js/parallax.3.1.0.min.js?v=1.0"></script>
+	<script src="js/scripts.js?v=1.1"></script>
+	<style>
+		/* loader */
+		.loader-layer {
+			/* background: #016d8d url(https://cdn.jsdelivr.net/gh/moezx/cdn@3.7.0/img/other/avg_2_1.png) no-repeat center center fixed; */
+			-webkit-background-size: cover;
+			-moz-background-size: cover;
+			-o-background-size: cover;
+			background-size: cover;
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			z-index: 999;
+		}
+
+		.loader-layer .tips {
+			font-family: 'Noto Sans SC', sans-serif;
+			color: #fff;
+			font-size: 2vh;
+			font-weight: 500;
+			pointer-events: auto;
+			margin: 10px;
+			position: fixed;
+		}
+
+		.loader {
+			width: calc(100% + 100px);
+			overflow-x: hidden;
+			overflow-y: hidden;
+			position: absolute;
+			left: -50px;
+		}
+
+		.loader .bar {
+			position: relative;
+			height: 2px;
+			width: 500px;
+			margin: 0 auto;
+			background: #fff;
+			margin-top: 150px;
+		}
+
+		.loader .circle {
+			position: absolute;
+			top: -30px;
+			margin-left: -30px;
+			height: 60px;
+			width: 60px;
+			left: 0;
+			background: #fff;
+			border-radius: 30%;
+			-webkit-animation: move 5s infinite;
+		}
+
+		.loader p {
+			position: absolute;
+			top: -35px;
+			right: -85px;
+			text-transform: uppercase;
+			color: #016d8d;
+			font-family: helvetica, sans-serif;
+			font-weight: bold;
+		}
+
+		@-webkit-keyframes move {
+			0% {
+				left: 0;
+			}
+
+			50% {
+				left: 100%;
+				-webkit-transform: rotate(450deg);
+				width: 150px;
+				height: 150px;
+			}
+
+			75% {
+				left: 100%;
+				-webkit-transform: rotate(450deg);
+				width: 150px;
+				height: 150px;
+			}
+
+			100% {
+				right: 100%;
+
+			}
+		}
+
+	</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+	<iframe src="live2d.html" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; border: none; z-index: -1; transform: scale(1.5) translate(-15vw, 0);"></iframe>
+	<header>
+		<div class="level-box-container">
+			<div class="level-box" id="level-box-adapter">
+				<div class="level-logo"></div>
+				<div class="user-level">
+					<div class="level-chart">
+						<div class="chart-bg" id="chart-bg"></div>
+						<div class="chart-pr" id="chart-pr"></div>
+						<div class="level-num" id="level-num">64</div>
+					</div>
+				</div>
+				<div class="user-info">
+					<div class="name">Username</div>
+					<div class="id">ID: UserID</div>
+				</div>
+			</div>
+		</div>
+	</header>
+</body>
 </html>

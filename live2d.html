@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+    <style href="css/normalize.css"></style>
+    <style href="css/styles.css"></style>
+    <script src="./js/spine-webgl.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="./js/MobileDrawer.js"></script>
+    <script src="./js/select.js"></script>
+    <script src="./js/SpinLoader.js"></script>
+    <link rel="stylesheet" href="./css/index.css" />
+    <!-- <style>
+        {
+            
+        }
+    </style> -->
+    </head>
+    <body>
+        <div id="spinWrapper">
+            <spin-loader id="spin" size="100" color="#00aaff"></spin-loader>
+        </div>
+        <mobile-drawer id="drawer" side="left">
+            <div style="padding: 16px">
+                <div id="panel" onclick="drawer.close()"></div>
+            </div>
+        </mobile-drawer>
+        <canvas id="canvas"></canvas>
+        <script type="module">
+            import { init } from "./js/index.js";
+            import { renderMemberSelect, DATA_FILTER_TYPE } from "./js/getData.js";
+            init({
+                dir: "./",
+                skelFile: "dyn_illust_char_1028_texas2.skel",
+                atlasFile: "dyn_illust_char_1028_texas2.atlas",
+                fitToCanvas: false,
+            });
+            renderMemberSelect([DATA_FILTER_TYPE.DynIllust]);
+        </script>
+    </body>
+</html>
