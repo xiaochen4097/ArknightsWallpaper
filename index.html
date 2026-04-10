@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<script src="js/arknights.js"></script>
+	<!-- <script src="js/arknights.js"></script> -->
 	<script src="js/jquery.3.3.1.min.js?v=1.0"></script>
 	<script src="js/jquery.pjax.js?v=1.0"></script>
 	<script src="js/GYST.js?v=1.0"></script>
 	<script src="js/parallax.3.1.0.min.js?v=1.0"></script>
+	<script src="js/mousePerspective.js?v=1.0"></script>
 	<script src="js/scripts.js?v=1.1"></script>
 	<style>
 		/* loader */
@@ -104,7 +105,16 @@
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-	<iframe src="live2d.html" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; border: none; z-index: -1; transform: scale(1.5) translate(-15vw, 0);"></iframe>
+	<iframe id="live2d-frame" src="live2d.html" style="
+        position: fixed;
+        top: 0; left: 0; 
+        width: 100vw; 
+        height: 100vh; 
+        border: none; 
+	pointer-events: none;
+        z-index: -1; 
+        transform: scale(1.5) translate(-15vw, 0);">
+    </iframe>
 	<header>
 		<div class="level-box-container">
 			<div class="level-box" id="level-box-adapter">
@@ -123,5 +133,19 @@
 			</div>
 		</div>
 	</header>
+	<script>
+		window.addEventListener('DOMContentLoaded', function () {
+			MousePerspective.create('#live2d-frame', {
+				baseTransform: 'scale(1.5) translate(-15vw, 0)',
+				perspective: 1400,
+				maxRotateX: 0,
+				maxRotateY: 0,
+				maxTranslateX: 10,
+				maxTranslateY: 0,
+				easing: 0.08,
+				resetOnLeave: false
+			});
+		});
+	</script>
 </body>
 </html>
